@@ -1,5 +1,8 @@
 require 'sinatra'
+require 'sinatra/activerecord'
 
 get '/' do
-  "#{['Hello', 'Hi', 'Hey'][rand(3)]} World!"
+  db_time = database.connection.execute('SELECT CURRENT_TIMESTAMP').first['now']
+  request.logger.info("DB time is #{db_time}")
+  erb :dashboard
 end

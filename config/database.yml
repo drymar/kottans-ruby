@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  database: kottans-ruby-development
+  host: localhost
+  username: dima
+  password: dima
