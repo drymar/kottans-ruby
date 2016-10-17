@@ -1,5 +1,5 @@
 :verbose: false
-:concurrency: 10
+:concurrency: 5
 
 :timeout: 30
 
@@ -10,6 +10,6 @@
   - low
 
 production:
-  :concurrency: 25
+  :concurrency: 5
 staging:
-  :concurrency: 15
+  :concurrency: 5
