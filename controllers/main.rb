@@ -42,22 +42,17 @@ helpers do
   end
 
   def authorize!
-    if message.nil?
-      flash[:notice] = 'Does not exist!'
-      redirect to('/')
-    end
+    deleted_message
     erb :'/messages/authorize'
   end
 
   def authorized?
+    deleted_message
     cookies[:user] == message.password_digest ? true : false
   end
 
   def show_message
-    if message.nil?
-      flash[:notice] = 'Does not exist!'
-      redirect to('/')
-    end
+    deleted_message
     if message.view_limit?
       message.delete
       flash[:notice] = 'Message has been destroyed!'
@@ -66,6 +61,13 @@ helpers do
       message.increment!(:visit_number, by = 1)
       @body = Encryptor.new(message.body, message.password_digest).decrypt
       erb :'messages/show'
+    end
+  end
+
+  def deleted_message
+    if message.nil?
+      flash[:notice] = 'Does not exist!'
+      redirect to('/')
     end
   end
 end
