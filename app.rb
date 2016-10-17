@@ -1,12 +1,11 @@
 require 'sinatra'
+require 'sinatra/activerecord'
 require "sinatra/cookies"
 require 'rack-flash'
-require 'sinatra/activerecord'
 require 'bcrypt'
 require 'aescrypt'
 require 'sidekiq'
 require 'redis'
-require 'sidekiq/api'
 
 require_relative 'models/message'
 require_relative 'controllers/main'

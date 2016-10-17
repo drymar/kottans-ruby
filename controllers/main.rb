@@ -10,10 +10,10 @@ end
 post '/messages' do
   @message = Message.new(params[:message])
   if @message.save
-    flash.now[:notice] = 'Message created!'
+    flash.now[:notice] = 'Message successfully created!'
     erb :'messages/created'
   else
-    flash.now[:notice] = 'Error!'
+    flash.now[:notice] = 'Please, fill necessary fields according to error messages'
     erb :main
   end
 end

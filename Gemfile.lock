@@ -18,6 +18,7 @@ GEM
     bcrypt (3.1.11)
     concurrent-ruby (1.0.2)
     connection_pool (2.2.0)
+    diff-lcs (1.2.5)
     i18n (0.7.0)
     minitest (5.9.1)
     multi_json (1.12.1)
@@ -31,6 +32,19 @@ GEM
       rack (>= 1.0)
     rake (11.3.0)
     redis (3.3.1)
+    rspec (3.5.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
+    rspec-core (3.5.4)
+      rspec-support (~> 3.5.0)
+    rspec-expectations (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-mocks (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-support (3.5.0)
     sidekiq (4.2.2)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -66,6 +80,7 @@ DEPENDENCIES
   rack-flash3
   rake
   redis (~> 3.2)
+  rspec
   sidekiq
   sinatra
   sinatra-activerecord
