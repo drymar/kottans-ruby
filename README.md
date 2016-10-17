@@ -1,10 +1,10 @@
 # kottans-ruby
 Kottans Ruby Test Task
 
-Requirements
+# Requirements
 PostgreSQL, Redis
 
-Install
+# Install
 
 You have 
 
