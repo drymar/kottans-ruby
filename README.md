@@ -6,8 +6,6 @@ PostgreSQL, Redis
 
 # Install
 
-You have 
-
 1. Clone repository
 2. Run `$ bundle install`
 3. Run `$ rackup -p 4567`
