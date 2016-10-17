@@ -1,1 +1,1 @@
-worker: bundle exec sidekiq
+worker: bundle exec sidekiq -r ./workers/destroy_message_worker.rb
