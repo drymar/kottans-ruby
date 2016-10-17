@@ -2,6 +2,7 @@ require_relative '../spec_helper'
 
 describe 'Sinatra App' do
   include Rack::Test::Methods
+
   let(:message) do
     Message.new(
       body: 'hello_world',
@@ -12,6 +13,10 @@ describe 'Sinatra App' do
     )
   end
   let(:token) { message.token }
+
+  after :all do
+    Message.delete_all
+  end
 
   def app
     Sinatra::Application

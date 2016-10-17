@@ -12,7 +12,7 @@ describe Message do
   end
   let(:message) { Message.new(params) }
 
-  before :each do
+  after :all do
     Message.delete_all 
   end
 
@@ -20,7 +20,11 @@ describe Message do
     expect { Message.new }.to_not raise_error
   end
 
-  describe 'Message can get params' do
+  it 'is invalid without a body' do
+    expect(message).to be_valid
+  end
+
+  context 'Message can get params' do
     it 'body' do
       expect(message.body).to eq('hello_world')
     end
@@ -38,16 +42,25 @@ describe Message do
     end
   end
 
-  describe 'Message can works with DB' do
+  context 'Message can works with DB' do
+    it 'raises error if saved without params' do
+      new_message = Message.new
+      expect { new_message.save! }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+
     it 'can be saved' do
-      message.save
-      m = Message.find(message.id)
-      expect(message).to eq(m)
+      expect {message.save}.to change { Message.count }.by(1)
     end
 
     it 'can be authorized by password' do
       m = message.authenticate('1234')
       expect(message).to eq(m)
+    end
+
+    it 'should check view limit' do
+      message.save
+      m = Message.last
+      expect(m.view_limit?).to be false
     end
   end
 end
