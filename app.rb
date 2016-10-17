@@ -17,4 +17,5 @@ Sidekiq.configure_client do |config|
   config.redis = { url: "redis://#{ENV['REDIS_HOST']}:#{ENV['REDIS_PORT']}" }
 end
 
-$redis = Redis.new(url: "redis://#{ENV['REDIS_HOST']}:#{ENV['REDIS_PORT']}")
+uri = ENV["REDISTOGO_URL"] || "redis://localhost:6379/"
+$redis = Redis.new(url: uri)
