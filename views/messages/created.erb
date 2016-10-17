@@ -1,4 +1,8 @@
 <p>Link to your safe message(copy it):</p>
 <a href="/message/<%= @message.token %>">
-	<%= "http://#{request.host}/message/#{@message.token}" %>
+  <%= "http://#{request.host}/message/#{@message.token}" %>
 </a>
+<br>
+<p>
+  Link with message will available during <%= @message.destroy_time %> hour(s) or <%= @message.visit_limit %> visit(s).
+<p>
