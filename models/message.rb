@@ -5,12 +5,10 @@ class Message < ActiveRecord::Base
   validates :destroy_time, :visit_limit, numericality: { greater_than_or_equal_to: 1 }
 
   before_create :create_token, :encrypt_body
-  after_create do
-    DestroyMessageWorker.perform_at(self.destroy_time.hours.from_now, self.id)
-  end
+  after_create :call_worker
 
   def view_limit?
-    visit_number == visit_limit ? true : false
+    visit_number == visit_limit
   end
 
   private
@@ -21,5 +19,9 @@ class Message < ActiveRecord::Base
 
   def encrypt_body
     self.body = Encryptor.new(self.body, self.password_digest).encrypt
+  end
+
+  def call_worker
+    DestroyMessageWorker.perform_at(self.destroy_time.hours.from_now, self.id)
   end
 end

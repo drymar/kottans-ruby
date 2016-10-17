@@ -10,7 +10,6 @@ require 'redis'
 require_relative 'models/message'
 require_relative 'controllers/main'
 require_relative 'services/encryptor'
-require_relative 'services/message_destroyer'
 require_relative 'workers/destroy_message_worker'
 
 Sidekiq.configure_client do |config|
