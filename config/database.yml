@@ -4,3 +4,10 @@ development:
   host: localhost
   username: dima
   password: dima
+
+test:
+  adapter: postgresql
+  database: kottans-ruby-test
+  host: localhost
+  username: dima
+  password: dima

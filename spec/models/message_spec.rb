@@ -1,8 +1,20 @@
-require_relative '../../spec_helper'
+require_relative '../spec_helper'
 
-RSpec.describe Message do
-  let(:params) { body: 'hello world', password: '1234', destroy_time: 1, visit_limit: 5 }
+describe Message do
+  let(:params) do
+    {
+    body: 'hello_world',
+    password: '1234',
+    token: SecureRandom.urlsafe_base64,
+    visit_limit: 5,
+    destroy_time: 1
+    }
+  end
   let(:message) { Message.new(params) }
+
+  before :each do
+    Message.delete_all 
+  end
 
   it 'could initialize without params' do
     expect { Message.new }.to_not raise_error
@@ -10,7 +22,7 @@ RSpec.describe Message do
 
   describe 'Message can get params' do
     it 'body' do
-      expect(message.body).to eq('hello world')
+      expect(message.body).to eq('hello_world')
     end
 
     it 'destroy time' do
@@ -24,10 +36,6 @@ RSpec.describe Message do
     it 'visit number' do
       expect(message.visit_number).to eq(0)
     end
-
-    it 'raise error for underfined' do
-      expect(message.underfined).to raise_error NoMethodError
-    end
   end
 
   describe 'Message can works with DB' do
@@ -38,7 +46,7 @@ RSpec.describe Message do
     end
 
     it 'can be authorized by password' do
-      m = message.authorize('1234')
+      m = message.authenticate('1234')
       expect(message).to eq(m)
     end
   end

@@ -8,7 +8,7 @@ require 'sidekiq'
 require 'redis'
 
 require_relative 'models/message'
-require_relative 'controllers/main'
+require_relative 'controllers/main_controller'
 require_relative 'services/encryptor'
 require_relative 'workers/destroy_message_worker'
 

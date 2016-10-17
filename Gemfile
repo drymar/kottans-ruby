@@ -12,4 +12,8 @@ gem 'bcrypt'
 gem 'aescrypt'
 gem 'sidekiq'
 gem 'redis', '~>3.2'
-gem 'rspec'
+
+group :test do
+  gem 'rack-test'
+  gem 'rspec'
+end
