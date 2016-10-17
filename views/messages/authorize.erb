@@ -1,0 +1,16 @@
+<h2>Message</h2>
+
+<p><%= @message.body %></p>
+
+<p>To view origin message, please enter password.</p>
+
+<form action="/message/authenticate" method="post">
+  <div class="fields">
+    <label for="message_password">Password:</label>
+    <input type="password" name="password">
+  </div>
+  <div class="actions">
+    <input type="hidden" name="token" value="<%= @message.token %>">
+    <input type="submit" value="Authenticate">
+  </div>
+</form>

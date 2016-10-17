@@ -1,0 +1,4 @@
+<p>Link to your safe message(copy it):</p>
+<a href="/message/<%= @message.token %>">
+	<%= "http://#{request.host}/message/#{@message.token}" %>
+</a>

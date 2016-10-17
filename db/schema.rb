@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161015160647) do
+ActiveRecord::Schema.define(version: 20161016101741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,9 +20,10 @@ ActiveRecord::Schema.define(version: 20161015160647) do
     t.string   "body"
     t.string   "password_digest"
     t.integer  "visit_number",    default: 0
-    t.datetime "destroy_time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "visit_limit"
+    t.integer  "destroy_time"
     t.index ["token"], name: "index_messages_on_token", unique: true, using: :btree
   end
 

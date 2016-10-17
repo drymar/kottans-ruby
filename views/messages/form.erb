@@ -1,0 +1,36 @@
+<form action="/messages" method="post">
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@message.errors.count, "error") %>
+         prohibited this public_bookmark from being saved:
+      </h2>
+      <ul>
+        <% @message.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="fields">
+    <label for="message_body">Message Text:</label><br>
+    <textarea name="message[body]" id="message_body" cols="40" rows="5"></textarea>
+  </div>
+  <br>
+  <div class="fields">
+    <label for="message_password">Password:</label>
+    <input type="password" name="message[password]" id="message_password">
+  </div>
+  <div class="fields">
+    <p>Destruction options:</p>
+    <label for="message_destroy_time">destroy after number of hours from now:</label>
+    <input type="datetime" name="message[destroy_time]" id="message_destroy_time"><br>
+    <label for="message_visit_limit">destroy after number of link visit: </label>
+    <input type="text" name="message[visit_limit]" id="message_visit_limit">
+  </div>
+  <br>
+  <div class="actions">
+    <input type="submit" value="Create Message">
+  </div>
+</form>
