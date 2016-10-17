@@ -1,5 +1,3 @@
-require_relative '../services/message_destroyer'
-
 class DestroyMessageWorker
   include Sidekiq::Worker
 
