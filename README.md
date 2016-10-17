@@ -13,4 +13,8 @@ PostgreSQL, Redis
 5. And we need redis for sidekiq. In another tab run `$ redis-server`
 6. Visit `http://localhost:4567/`
 
+# Testing
+
+Run test `$ rspec`
+
 Have a nice day :)
