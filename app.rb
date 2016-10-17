@@ -15,9 +15,8 @@ require_relative 'services/message_destroyer'
 require_relative 'workers/destroy_message_worker'
 
 Sidekiq.configure_client do |config|
-  config.redis = { url: uri }
+  config.redis = { url: ENV["REDISCLOUD_URL"] }
 end
 
-uri = URI.parse(ENV["REDISTOGO_URL"] || "redis://localhost:6379/" )
-$redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
-Resque.redis = $redis
+uri = URI.parse(ENV["REDISCLOUD_URL"] || "redis://localhost:6379/" )
+REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
